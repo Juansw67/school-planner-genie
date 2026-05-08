@@ -6,11 +6,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Planilha do Trimestre — gerador de boletim em Excel" },
+      { title: "Notamín — quanto você precisa tirar na prova final" },
       {
         name: "description",
         content:
-          "Monte sua planilha de notas em segundos. Calcula a nota mínima que você precisa tirar na prova final para passar.",
+          "Notamín monta sua planilha de notas em segundos e calcula a nota mínima que falta pra você passar.",
       },
     ],
     links: [
@@ -103,7 +103,7 @@ function Index() {
       {/* Top strip */}
       <div className="border-b border-border bg-paper/60">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-          <span className="font-mono">Caderno · v.1</span>
+          <span className="font-mono">Notamín · v.1</span>
           <span className="font-mono">terça-feira</span>
         </div>
       </div>
@@ -114,7 +114,7 @@ function Index() {
           <div>
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-paper px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              gerador de planilha · grátis
+              Notamín · gerador de planilha grátis
             </p>
             <h1 className="font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Quanto você precisa tirar na <em className="text-accent">prova final</em> pra passar?
@@ -219,7 +219,7 @@ function Index() {
       <footer className="mx-auto max-w-5xl px-6 pb-10 text-xs text-muted-foreground">
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5">
           <span>Funciona offline depois de baixar. Abre no Excel, Google Sheets e LibreOffice.</span>
-          <span className="font-mono">— bons estudos.</span>
+          <span className="font-mono">Notamín — bons estudos.</span>
         </div>
       </footer>
     </main>
