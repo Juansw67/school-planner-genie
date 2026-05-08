@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "ProvaFinalApp" },
+      { name: "description", content: "School Planner Genie generates personalized Excel school planning spreadsheets." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "ProvaFinalApp" },
+      { property: "og:description", content: "School Planner Genie generates personalized Excel school planning spreadsheets." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "ProvaFinalApp" },
+      { name: "twitter:description", content: "School Planner Genie generates personalized Excel school planning spreadsheets." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ffccbb-094c-4edf-9625-f46133a6e21a/id-preview-526ab374--06820ab4-1180-4b3d-8e99-00e054d0ead3.lovable.app-1778252018758.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ffccbb-094c-4edf-9625-f46133a6e21a/id-preview-526ab374--06820ab4-1180-4b3d-8e99-00e054d0ead3.lovable.app-1778252018758.png" },
     ],
     links: [
       {
