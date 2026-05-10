@@ -9,38 +9,110 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UpgradeRouteImport } from './routes/upgrade'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AbntRouteImport } from './routes/abnt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicHotmartWebhookRouteImport } from './routes/api/public/hotmart-webhook'
 
+const UpgradeRoute = UpgradeRouteImport.update({
+  id: '/upgrade',
+  path: '/upgrade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AbntRoute = AbntRouteImport.update({
+  id: '/abnt',
+  path: '/abnt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHotmartWebhookRoute = ApiPublicHotmartWebhookRouteImport.update({
+  id: '/api/public/hotmart-webhook',
+  path: '/api/public/hotmart-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/abnt': typeof AbntRoute
+  '/login': typeof LoginRoute
+  '/upgrade': typeof UpgradeRoute
+  '/api/public/hotmart-webhook': typeof ApiPublicHotmartWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/abnt': typeof AbntRoute
+  '/login': typeof LoginRoute
+  '/upgrade': typeof UpgradeRoute
+  '/api/public/hotmart-webhook': typeof ApiPublicHotmartWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/abnt': typeof AbntRoute
+  '/login': typeof LoginRoute
+  '/upgrade': typeof UpgradeRoute
+  '/api/public/hotmart-webhook': typeof ApiPublicHotmartWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/abnt'
+    | '/login'
+    | '/upgrade'
+    | '/api/public/hotmart-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/abnt' | '/login' | '/upgrade' | '/api/public/hotmart-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/abnt'
+    | '/login'
+    | '/upgrade'
+    | '/api/public/hotmart-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AbntRoute: typeof AbntRoute
+  LoginRoute: typeof LoginRoute
+  UpgradeRoute: typeof UpgradeRoute
+  ApiPublicHotmartWebhookRoute: typeof ApiPublicHotmartWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/upgrade': {
+      id: '/upgrade'
+      path: '/upgrade'
+      fullPath: '/upgrade'
+      preLoaderRoute: typeof UpgradeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/abnt': {
+      id: '/abnt'
+      path: '/abnt'
+      fullPath: '/abnt'
+      preLoaderRoute: typeof AbntRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +120,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hotmart-webhook': {
+      id: '/api/public/hotmart-webhook'
+      path: '/api/public/hotmart-webhook'
+      fullPath: '/api/public/hotmart-webhook'
+      preLoaderRoute: typeof ApiPublicHotmartWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AbntRoute: AbntRoute,
+  LoginRoute: LoginRoute,
+  UpgradeRoute: UpgradeRoute,
+  ApiPublicHotmartWebhookRoute: ApiPublicHotmartWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
