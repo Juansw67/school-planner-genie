@@ -14,13 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      doc_usage: {
+        Row: {
+          created_at: string
+          id: string
+          tema: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          tema?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          tema?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ip_usage: {
+        Row: {
+          count: number
+          created_at: string
+          ip: string
+          last_user_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          count?: number
+          created_at?: string
+          ip: string
+          last_user_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          count?: number
+          created_at?: string
+          ip?: string
+          last_user_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          hotmart_transaction: string | null
+          id: string
+          is_premium: boolean
+          premium_since: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          hotmart_transaction?: string | null
+          id?: string
+          is_premium?: boolean
+          premium_since?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          hotmart_transaction?: string | null
+          id?: string
+          is_premium?: boolean
+          premium_since?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      can_generate: { Args: { _user_id: string }; Returns: Json }
     }
     Enums: {
       [_ in never]: never
