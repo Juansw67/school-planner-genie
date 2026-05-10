@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import * as XLSX from "xlsx";
+import { SiteNav } from "@/components/SiteNav";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -100,13 +101,7 @@ function Index() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Top strip */}
-      <div className="border-b border-border bg-paper/60">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-          <span className="font-mono">Notamín · v.1</span>
-          <span className="font-mono">terça-feira</span>
-        </div>
-      </div>
+      <SiteNav />
 
       <div className="mx-auto grid max-w-5xl gap-12 px-6 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
         {/* Left — editorial intro */}
