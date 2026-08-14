@@ -105,18 +105,6 @@ function AbntPage() {
     }
   }
 
-  if (authLoading) {
-    return (
-      <main className="min-h-screen bg-background text-foreground">
-        <SiteNav />
-        <div className="mx-auto max-w-5xl px-6 py-20 text-sm text-muted-foreground">carregando…</div>
-      </main>
-    );
-  }
-
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
