@@ -62,7 +62,7 @@ function AbntPage() {
     setLoading(true);
     try {
       // 1) consome a quota por IP ANTES de gerar (server-side, à prova de burla)
-      const quota = await consume({ data: { userId: user?.id ?? null } });
+      const quota = await consume({ data: { userId: null } });
       if (!quota.ok) {
         setLoading(false);
         navigate({ to: "/upgrade" });
