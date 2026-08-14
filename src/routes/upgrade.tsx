@@ -13,11 +13,8 @@ export const Route = createFileRoute("/upgrade")({
 });
 
 function UpgradePage() {
-  const { user, loading } = useAuth();
   const { isPremium, used, limit } = useUsage();
 
-  if (loading) return null;
-  if (!user) return <Navigate to="/login" />;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
