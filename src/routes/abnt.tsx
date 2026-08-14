@@ -1,9 +1,8 @@
-import { createFileRoute, Link, Navigate, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { gerarDocx, type DadosCapa, type Trabalho } from "@/lib/abnt-docx";
 import { SiteNav } from "@/components/SiteNav";
-import { useAuth } from "@/hooks/use-auth";
 import { useUsage } from "@/hooks/use-usage";
 import { useServerFn } from "@tanstack/react-start";
 import { consumeQuota } from "@/lib/quota.functions";
