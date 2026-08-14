@@ -24,7 +24,7 @@ export const Route = createFileRoute("/abnt")({
 type Mode = "scratch" | "from-research";
 
 function AbntPage() {
-  const { user, loading: authLoading } = useAuth();
+  
   const usage = useUsage();
   const navigate = useNavigate();
   const consume = useServerFn(consumeQuota);
