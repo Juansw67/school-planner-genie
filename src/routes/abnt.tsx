@@ -1,9 +1,8 @@
-import { createFileRoute, Link, Navigate, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { gerarDocx, type DadosCapa, type Trabalho } from "@/lib/abnt-docx";
 import { SiteNav } from "@/components/SiteNav";
-import { useAuth } from "@/hooks/use-auth";
 import { useUsage } from "@/hooks/use-usage";
 import { useServerFn } from "@tanstack/react-start";
 import { consumeQuota } from "@/lib/quota.functions";
@@ -25,7 +24,7 @@ export const Route = createFileRoute("/abnt")({
 type Mode = "scratch" | "from-research";
 
 function AbntPage() {
-  const { user, loading: authLoading } = useAuth();
+  
   const usage = useUsage();
   const navigate = useNavigate();
   const consume = useServerFn(consumeQuota);
@@ -63,7 +62,7 @@ function AbntPage() {
     setLoading(true);
     try {
       // 1) consome a quota por IP ANTES de gerar (server-side, à prova de burla)
-      const quota = await consume({ data: { userId: user?.id ?? null } });
+      const quota = await consume({ data: { userId: null } });
       if (!quota.ok) {
         setLoading(false);
         navigate({ to: "/upgrade" });
@@ -106,18 +105,6 @@ function AbntPage() {
     }
   }
 
-  if (authLoading) {
-    return (
-      <main className="min-h-screen bg-background text-foreground">
-        <SiteNav />
-        <div className="mx-auto max-w-5xl px-6 py-20 text-sm text-muted-foreground">carregando…</div>
-      </main>
-    );
-  }
-
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">

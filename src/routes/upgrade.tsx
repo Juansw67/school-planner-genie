@@ -1,6 +1,5 @@
-import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
-import { useAuth } from "@/hooks/use-auth";
 import { useUsage } from "@/hooks/use-usage";
 
 export const Route = createFileRoute("/upgrade")({
@@ -14,11 +13,8 @@ export const Route = createFileRoute("/upgrade")({
 });
 
 function UpgradePage() {
-  const { user, loading } = useAuth();
   const { isPremium, used, limit } = useUsage();
 
-  if (loading) return null;
-  if (!user) return <Navigate to="/login" />;
 
   return (
     <div className="min-h-screen bg-background text-foreground">

@@ -1,16 +1,6 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { Link } from "@tanstack/react-router";
 
 export function SiteNav() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-
-  async function logout() {
-    await supabase.auth.signOut();
-    navigate({ to: "/" });
-  }
-
   return (
     <nav className="border-b border-border bg-paper/60">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
@@ -33,19 +23,6 @@ export function SiteNav() {
           >
             trabalho abnt
           </Link>
-          {user ? (
-            <button onClick={logout} className="hover:text-foreground" title={user.email ?? ""}>
-              sair
-            </button>
-          ) : (
-            <Link
-              to="/login"
-              activeProps={{ className: "text-foreground" }}
-              className="hover:text-foreground"
-            >
-              entrar
-            </Link>
-          )}
         </div>
       </div>
     </nav>
