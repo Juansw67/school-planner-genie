@@ -36,7 +36,7 @@ function AbntPage() {
   const [cidade, setCidade] = useState("");
   const ano = new Date().getFullYear().toString();
   const [anoStr, setAnoStr] = useState(ano);
-  const [integrantes, setIntegrantes] = useState<string[]>(["", "", "", ""]);
+  const [integrantes, setIntegrantes] = useState<string[]>(["", "", "", "", ""]);
   const [pesquisa, setPesquisa] = useState("");
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
@@ -237,7 +237,7 @@ function AbntPage() {
               </Field>
             </div>
 
-            <Field label="Integrantes (até 4)">
+            <Field label="Integrantes (até 5)">
               <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                 {integrantes.map((v, i) => (
                   <input
