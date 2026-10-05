@@ -18,6 +18,12 @@ export const Route = createFileRoute("/abnt")({
           "Gere trabalhos escolares e universitários em formato ABNT (.docx) em segundos. Capa, folha de rosto, sumário, introdução, desenvolvimento, conclusão e referências.",
       },
     ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
   }),
 });
 
