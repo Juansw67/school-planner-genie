@@ -18,6 +18,12 @@ export const Route = createFileRoute("/abnt")({
           "Gere trabalhos escolares e universitários em formato ABNT (.docx) em segundos. Capa, folha de rosto, sumário, introdução, desenvolvimento, conclusão e referências.",
       },
     ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
   }),
 });
 
@@ -36,7 +42,7 @@ function AbntPage() {
   const [cidade, setCidade] = useState("");
   const ano = new Date().getFullYear().toString();
   const [anoStr, setAnoStr] = useState(ano);
-  const [integrantes, setIntegrantes] = useState<string[]>(["", "", "", ""]);
+  const [integrantes, setIntegrantes] = useState<string[]>(["", "", "", "", ""]);
   const [pesquisa, setPesquisa] = useState("");
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
@@ -237,7 +243,7 @@ function AbntPage() {
               </Field>
             </div>
 
-            <Field label="Integrantes (até 4)">
+            <Field label="Integrantes (até 5)">
               <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                 {integrantes.map((v, i) => (
                   <input

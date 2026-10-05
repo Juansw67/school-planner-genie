@@ -7,6 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 
@@ -32,7 +33,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
 
@@ -73,15 +74,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Notamín — quanto você precisa tirar na prova final" },
-      { name: "description", content: "Notamín gera sua planilha de notas em Excel e calcula a nota mínima que falta pra você passar." },
+      { name: "description", content: "Notamín gera trabalhos escolares e universitários formatados em ABNT (.docx) em segundos." },
       { name: "author", content: "Notamín" },
       { property: "og:title", content: "Notamín — quanto você precisa tirar na prova final" },
-      { property: "og:description", content: "Notamín gera sua planilha de notas em Excel e calcula a nota mínima que falta pra você passar." },
+      { property: "og:description", content: "Notamín gera trabalhos escolares e universitários formatados em ABNT (.docx) em segundos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Notamín — quanto você precisa tirar na prova final" },
-      { name: "twitter:description", content: "Notamín gera sua planilha de notas em Excel e calcula a nota mínima que falta pra você passar." },
+      { name: "twitter:description", content: "Notamín gera trabalhos escolares e universitários formatados em ABNT (.docx) em segundos." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ffccbb-094c-4edf-9625-f46133a6e21a/id-preview-526ab374--06820ab4-1180-4b3d-8e99-00e054d0ead3.lovable.app-1778252018758.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ffccbb-094c-4edf-9625-f46133a6e21a/id-preview-526ab374--06820ab4-1180-4b3d-8e99-00e054d0ead3.lovable.app-1778252018758.png" },
     ],
